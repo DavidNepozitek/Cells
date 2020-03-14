@@ -24,7 +24,10 @@ int main()
 
 	try
 	{
-		Game game;
+		sf::ContextSettings settings;
+		settings.antialiasingLevel = 8;
+		
+		Game game(settings);
 		game.run();
 	} catch (const std::exception& e)
 	{

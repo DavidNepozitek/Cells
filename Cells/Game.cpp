@@ -1,13 +1,16 @@
 ﻿#include "Game.h"
 #include "MenuState.h"
+#include "GameState.h"
+#include <iostream>
 
 
-Game::Game()
-	: window_(sf::VideoMode(640, 480), "The Hungry Cell", sf::Style::Close)
-	, state_stack_(State::Context(window_, font_holder_))
+Game::Game(sf::ContextSettings settings):
+window_(sf::VideoMode(900, 600), "The Hungry Cell", sf::Style::Default, settings),
+state_stack_(State::Context(window_, font_holder_))
 {
 	window_.setKeyRepeatEnabled(false);
-
+	window_.setView(window_.getDefaultView());
+	
 	register_states();
 
 	font_holder_.load(Fonts::Arial, "Fonts/arial.ttf");
@@ -43,6 +46,14 @@ void Game::process_input()
 
 		if (event.type == sf::Event::Closed)
 			window_.close();
+
+		if (event.type == sf::Event::Resized)
+		{
+			// update the view to the new size of the window
+			sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+			window_.setView(sf::View(visibleArea));
+			std::cout << "resize";
+		}
 	}
 }
 
@@ -57,7 +68,7 @@ void Game::render()
 
 	state_stack_.draw();
 
-	window_.setView(window_.getDefaultView());
+	
 	
 	//mWindow.draw(mStatisticsText);
 
@@ -68,4 +79,5 @@ void Game::render()
 void Game::register_states()
 {
 	state_stack_.register_state<MenuState>(States::Menu);
+	state_stack_.register_state<GameState>(States::Game);
 }

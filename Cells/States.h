@@ -4,6 +4,6 @@ namespace States
 {
 	enum ID
 	{
-		None, Menu
+		None, Menu, Game
 	};
 }

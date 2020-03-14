@@ -14,6 +14,6 @@ class Game
 	StateStack				state_stack_;
 	FontHolder				font_holder_;
 public:
-	Game();
+	Game(sf::ContextSettings settings);
 	void run();
 };
