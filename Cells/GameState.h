@@ -7,7 +7,7 @@ class GameState: public State
 public:
 	GameState(StateStack& stack, const Context& context)
 		: State(stack, context)
-		, world_(*context.window)
+		, world_(*context.window, *context.progress, *context.settings)
 	{
 	}
 

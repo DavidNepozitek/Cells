@@ -12,6 +12,10 @@ namespace sf {
 	class Time;
 }
 
+
+/**
+ * \brief Represents of node of the game scene - it can have arbitrary number of children and one parent
+ */
 class SceneNode : public sf::Transformable, public sf::Drawable, sf::NonCopyable
 {
 public:
@@ -31,7 +35,7 @@ private:
 	virtual void			update_current(sf::Time dt);
 	void					update_children(sf::Time dt);
 
-	void			draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void					draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void			draw_current(sf::RenderTarget& target, sf::RenderStates states) const;
 	void					draw_children(sf::RenderTarget& target, sf::RenderStates states) const;
 };

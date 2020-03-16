@@ -73,7 +73,7 @@ void StateStack::apply_pending_changes()
 		switch (change.action)
 		{
 		case Push:
-			stack_.push_back(create_state(change.stateID));
+			stack_.push_back(create_state(change.state_id));
 			break;
 
 		case Pop:
@@ -89,6 +89,6 @@ void StateStack::apply_pending_changes()
 	pending_list_.clear();
 }
 
-StateStack::PendingChange::PendingChange(const Action action, const States::ID stateID) : action(action), stateID(stateID)
+StateStack::PendingChange::PendingChange(const Action action, const States::ID state_id) : action(action), state_id(state_id)
 {
 }

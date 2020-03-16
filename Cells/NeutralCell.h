@@ -1,21 +1,17 @@
 ﻿#pragma once
 #include "Cell.h"
-#include <SFML/Graphics/CircleShape.hpp>
 
-class BackgroundCell: public Cell
+class NeutralCell: public Cell
 {
-public:
-	BackgroundCell(float size);
-
-private:
 	void draw_current(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void update_current(sf::Time dt) override;
-	sf::CircleShape	shape_;
 public:
+	explicit NeutralCell(float size);
+	bool is_bigger{};
 	void react_with(BackgroundCell& other) override;
 	void react_with(FoodCell& other) override;
 	void react_with(PlayerCell& other) override;
 	void react(Cell& cell) override;
-	~BackgroundCell() override;
+	~NeutralCell() override;
 	void react_with(NeutralCell& other) override;
 };

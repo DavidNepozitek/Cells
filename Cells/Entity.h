@@ -15,7 +15,7 @@ public:
 
 
 private:
-	virtual void		update_current(sf::Time dt);
+	void		update_current(sf::Time dt) override;
 
 
 private:

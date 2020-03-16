@@ -5,6 +5,11 @@
 #include <cassert>
 
 
+/**
+ * \brief Class allowing access to resources such as fonts, textures, etc.
+ * \tparam Identifier Type of resource identifier
+ * \tparam Resource Type of resource
+ */
 template <typename Identifier, typename Resource>
 class ResourceHolder
 {

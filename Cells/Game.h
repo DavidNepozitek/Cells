@@ -13,7 +13,9 @@ class Game
 	sf::RenderWindow		window_;
 	StateStack				state_stack_;
 	FontHolder				font_holder_;
+
+	bool is_paused_{};
 public:
-	Game(sf::ContextSettings settings);
+	Game(sf::ContextSettings& settings, GameSettings& game_settings, GameProgress& progress);
 	void run();
 };

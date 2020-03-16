@@ -4,6 +4,8 @@
 #include <SFML/Window/Event.hpp>
 #include "ResourceHolder.h"
 #include "Fonts.hpp"
+#include "GameSettings.h"
+#include "GameProgress.h"
 
 namespace sf
 {
@@ -12,6 +14,9 @@ namespace sf
 
 class StateStack;
 
+/**
+ * \brief Base state class
+ */
 class State
 {
 public:
@@ -19,10 +24,12 @@ public:
 
 	struct Context
 	{
-		Context(sf::RenderWindow& window, FontHolder& fonts);
+		Context(sf::RenderWindow& window, FontHolder& fonts, GameSettings& settings, GameProgress& progress);
 
 		sf::RenderWindow*	window;
 		FontHolder* font_holder;
+		GameSettings* settings{};
+		GameProgress* progress{};
 	};
 
 

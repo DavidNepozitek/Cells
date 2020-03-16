@@ -14,13 +14,12 @@ class PauseState : public State
 public:
 	PauseState(StateStack& stack, Context context);
 
-	virtual void		draw();
-	virtual bool		update(sf::Time dt);
-	virtual bool		handleEvent(const sf::Event& event);
+	void		draw() override;
+	bool		update(sf::Time dt) override;
 
-
+	~PauseState() override;
+	bool handle_event(const sf::Event& event) override;
 private:
 	sf::RectangleShape			background_;
-	sf::Text			text_;
-	sf::Text			instructions_;
+	sf::Text			continue_text_;
 };

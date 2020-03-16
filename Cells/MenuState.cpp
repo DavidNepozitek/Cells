@@ -14,25 +14,23 @@ MenuState::MenuState(StateStack& stack, Context context)
 	continue_text.setFont(context.font_holder->get(Fonts::Arial));
 	continue_text.setString("Press [Enter] to start the game");
 	continue_text.setCharacterSize(16);
-	center_origin(continue_text);
-	continue_text.setPosition(context.window->getView().getSize() / 2.f);
 
 
+	controls_text.setFont(context.font_holder->get(Fonts::Arial));
+	controls_text.setString("Consume smaller cells and become the biggest one!\n\nUse arrows or WASD to control the cell\n\nPress [P] to pause the game\n\nPress [R] to restart the game");
+	controls_text.setCharacterSize(16);
+	controls_text.setFillColor(sf::Color(255, 255, 255, 150));
+	
 	welcome_text.setFont(context.font_holder->get(Fonts::Arial));
 	welcome_text.setString("Welcome to The Hungry Cell");
-	center_origin(welcome_text);
-	welcome_text.setPosition((context.window->getView().getSize() / 2.f) + sf::Vector2f(0, -60));
-
 
 	background = sf::RectangleShape(context.window->getView().getSize());
 	background.setFillColor(sf::Color(0, 15, 30));
-	
-	//mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
 }
 
 void MenuState::draw()
 {
-	sf::RenderWindow& window = *get_context().window;
+	auto& window = *get_context().window;
 
 	center_origin(continue_text);
 	continue_text.setPosition(window.getView().getSize() / 2.f);
@@ -40,26 +38,23 @@ void MenuState::draw()
 	center_origin(welcome_text);
 	welcome_text.setPosition((window.getView().getSize() / 2.f) + sf::Vector2f(0, -60));
 
+	center_origin(controls_text);
+	auto pos = window.getView().getSize() / 2.f;
+	pos.y += 120;
+	controls_text.setPosition(pos);
+
 	background.setSize(window.getView().getSize());
 	
 	window.draw(background);
-	window.draw(welcome_text);
-	window.draw(continue_text);
+		window.draw(welcome_text);
 
-	//if (mShowText)
-	//	window.draw(mText);
+		window.draw(controls_text);
+
+	window.draw(continue_text);
 }
 
 bool MenuState::update(sf::Time dt)
 {
-	//mTextEffectTime += dt;
-
-	//if (mTextEffectTime >= sf::seconds(0.5f))
-	//{
-	//	mShowText = !mShowText;
-	//	mTextEffectTime = sf::Time::Zero;
-	//}
-
 	return true;
 }
 

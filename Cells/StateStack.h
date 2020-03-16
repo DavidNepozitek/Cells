@@ -8,6 +8,10 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 
+/**
+ * \brief Stack of state, the state on the top of the stack acts as the "current" state
+ *	Changes may be propagated to lower levels of the stack
+ */
 class StateStack : private sf::NonCopyable
 {
 public:
@@ -34,9 +38,9 @@ private:
 	
 	struct PendingChange
 	{
-		explicit PendingChange(Action action, States::ID stateID = States::None);
+		explicit PendingChange(Action action, States::ID state_id = States::None);
 		Action action;
-		States::ID stateID;
+		States::ID state_id;
 	};
 	
 	std::vector<State::ptr> stack_;

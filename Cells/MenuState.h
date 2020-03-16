@@ -13,6 +13,7 @@ public:
 	bool		handle_event(const sf::Event& event) override;
 	sf::Text	welcome_text;
 	sf::Text	continue_text;
+	sf::Text	controls_text;
 	sf::RectangleShape background;
 
 private:

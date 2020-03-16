@@ -130,10 +130,13 @@
     <ClCompile Include="FoodCell.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEndState.cpp" />
+    <ClCompile Include="GameProgress.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InitState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="NeutralCell.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayerCell.cpp" />
     <ClCompile Include="ResourceHolder.cpp" />
@@ -150,9 +153,12 @@
     <ClInclude Include="FoodCell.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEndState.h" />
+    <ClInclude Include="GameProgress.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InitState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="NeutralCell.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PlayerCell.h" />
     <ClInclude Include="ResourceHolder.h" />

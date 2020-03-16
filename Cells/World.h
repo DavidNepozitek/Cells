@@ -3,6 +3,8 @@
 #include <SFML/Graphics/View.hpp>
 #include "SceneNode.h"
 #include "PlayerCell.h"
+#include "GameProgress.h"
+#include "GameSettings.h"
 
 namespace sf {
 	class Event;
@@ -10,13 +12,19 @@ namespace sf {
 	class Time;
 }
 
+/**
+ * \brief Represents the game world (its state, entities etc.)
+ */
 class World: sf::NonCopyable
 {
 public:
-	explicit							World(sf::RenderWindow& window);
+	explicit							World(sf::RenderWindow& window, GameProgress& game_progress, GameSettings& settings);
 	void								update(sf::Time dt);
 	void								draw() const;
-	bool								handle_event(const sf::Event& event);
+	static bool								handle_event(const sf::Event& event);
+	bool								has_ended{};
+	GameProgress&						game_progress;
+	GameSettings&						game_settings;
 private:
 	sf::RenderWindow&					window_;
 	sf::View							world_view_;

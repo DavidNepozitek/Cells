@@ -3,8 +3,15 @@
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "PlayerCell.h"
+#include "NeutralCell.h"
+#include "Utility.h"
 
-void FoodCell::draw_current(sf::RenderTarget& target, sf::RenderStates states) const
+FoodCell::FoodCell(const float size): Cell(size)
+{
+	
+}
+
+void FoodCell::draw_current(sf::RenderTarget& target, const sf::RenderStates states) const
 {
 	sf::CircleShape shape(size);
 	shape.move(-size, -size);
@@ -13,7 +20,7 @@ void FoodCell::draw_current(sf::RenderTarget& target, sf::RenderStates states) c
 	target.draw(shape, states);
 }
 
-void FoodCell::update_current(sf::Time dt)
+void FoodCell::update_current(const sf::Time dt)
 {
 	if (death_marked)
 	{
@@ -29,6 +36,10 @@ void FoodCell::react_with(BackgroundCell& other)
 
 void FoodCell::react_with(FoodCell& other)
 {
+	const auto dist = get_cells_distance(*this, other);
+
+	if (dist > 0.01) return;
+	
 	if (death_marked || other.death_marked) return;
 	if (other.size >= size)
 	{
@@ -53,3 +64,8 @@ void FoodCell::react(Cell& cell)
 
 FoodCell::~FoodCell()
 = default;
+
+void FoodCell::react_with(NeutralCell& other)
+{
+	other.react_with(*this);
+}

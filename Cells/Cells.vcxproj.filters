@@ -66,6 +66,15 @@
     <ClCompile Include="GameEndState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NeutralCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameProgress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ResourceHolder.h">
@@ -123,6 +132,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="GameEndState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeutralCell.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameProgress.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

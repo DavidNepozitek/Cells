@@ -1,9 +1,10 @@
 ﻿#include "State.h"
 #include "StateStack.h"
 
-State::Context::Context(sf::RenderWindow& window, FontHolder& fonts)
-	: window(&window), font_holder(&fonts)
+State::Context::Context(sf::RenderWindow& window, FontHolder& fonts, GameSettings& game_settings, GameProgress& progress)
+	: window(&window), font_holder(&fonts), settings(&game_settings), progress(&progress)
 {
+
 }
 
 State::State(StateStack& stack, const Context context)
