@@ -22,7 +22,6 @@ GameEndState::~GameEndState()
 void GameEndState::draw()
 {
 	auto& window = *get_context().window;
-
 	
 	center_origin(title_text_);
 	title_text_.setPosition((window.getView().getSize() / 2.f) + sf::Vector2f(0, -60));

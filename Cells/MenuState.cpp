@@ -46,9 +46,8 @@ void MenuState::draw()
 	background.setSize(window.getView().getSize());
 	
 	window.draw(background);
-		window.draw(welcome_text);
-
-		window.draw(controls_text);
+	window.draw(welcome_text);
+	window.draw(controls_text);
 
 	window.draw(continue_text);
 }
@@ -60,7 +59,7 @@ bool MenuState::update(sf::Time dt)
 
 bool MenuState::handle_event(const sf::Event& event)
 {
-	// If any key is pressed, trigger the next screen
+	// Start the game when ENTER is pressed
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
 	{
 		request_stack_pop();

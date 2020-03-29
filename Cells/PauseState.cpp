@@ -37,10 +37,6 @@ bool PauseState::update(sf::Time dt)
 	return false;
 }
 
-
-PauseState::~PauseState()
-= default;
-
 bool PauseState::handle_event(const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P)

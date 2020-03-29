@@ -40,7 +40,8 @@ void FoodCell::react_with(FoodCell& other)
 	const auto dist = get_cells_distance(*this, other);
 
 	if (dist > 0.01) return;
-	
+
+	// Merge the cells if not dead already
 	if (death_marked || other.death_marked) return;
 	if (other.size >= size)
 	{

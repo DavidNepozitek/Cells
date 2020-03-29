@@ -21,6 +21,12 @@ class State
 public:
 	typedef std::unique_ptr<State> ptr;
 
+	// States should be used only directly in StateStack
+	State(const State& other) = delete;
+	State(State&& other) = delete;
+	State& operator=(const State& other) = delete;
+	State& operator=(State&& other) = delete;
+
 	struct Context
 	{
 		Context(sf::RenderWindow& window, FontHolder& fonts, GameSettings& settings, GameProgress& progress);

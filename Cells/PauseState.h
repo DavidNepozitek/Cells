@@ -17,9 +17,8 @@ public:
 	void		draw() override;
 	bool		update(sf::Time dt) override;
 
-	~PauseState() override;
 	bool handle_event(const sf::Event& event) override;
 private:
 	sf::RectangleShape			background_;
-	sf::Text			continue_text_;
+	sf::Text					continue_text_;
 };

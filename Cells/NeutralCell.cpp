@@ -6,7 +6,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "Utility.h"
 
-void NeutralCell::draw_current(sf::RenderTarget& target, sf::RenderStates states) const
+void NeutralCell::draw_current(sf::RenderTarget& target, const sf::RenderStates states) const
 {
 	sf::CircleShape shape(size);
 	shape.move(-size, -size);
@@ -25,7 +25,7 @@ void NeutralCell::draw_current(sf::RenderTarget& target, sf::RenderStates states
 	target.draw(shape, states);
 }
 
-void NeutralCell::update_current(sf::Time dt)
+void NeutralCell::update_current(const sf::Time dt)
 {
 	if (death_marked)
 	{
@@ -37,6 +37,7 @@ void NeutralCell::update_current(sf::Time dt)
 		return;
 	}
 
+	// Small random movements
 	const auto r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX) - 0.5f;
 	const auto r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX) - 0.5f;
 	accelerate((r1 * 120 * dt.asSeconds()) / size, (r2 * 120 * dt.asSeconds()) / size);
@@ -57,6 +58,7 @@ void NeutralCell::react_with(BackgroundCell& other)
 
 void NeutralCell::react_with(FoodCell& other)
 {
+	// Eat food cells
 	if (death_marked || other.death_marked) return;
 	
 	const auto dist = get_cells_distance(*this, other);
@@ -83,6 +85,7 @@ NeutralCell::~NeutralCell()
 
 void NeutralCell::react_with(NeutralCell& other)
 {
+	// Eat smaller NeutralCells
 	const auto dist = get_cells_distance(*this, other);
 
 	if (dist > 0.01) return;

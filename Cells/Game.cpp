@@ -45,11 +45,11 @@ void Game::process_input()
 	sf::Event event{};
 	while (window_.pollEvent(event))
 	{
+		// Pause the game when focus is lost
 		if (event.type == sf::Event::GainedFocus)
 			is_paused_ = false;
 		else if (event.type == sf::Event::LostFocus)
 			is_paused_ = true;
-		
 		state_stack_.handle_event(event);
 
 		if (event.type == sf::Event::Closed)
