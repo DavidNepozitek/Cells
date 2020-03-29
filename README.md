@@ -17,6 +17,7 @@ The game is build on [SFML](https://www.sfml-dev.org/). It uses some patterns re
 The game is based on interaction of various cells and moving in an area with low resistance. During every update a cell can react with every other cell and the interaction is based on the types of both of the cells (implemeted as double dispatch). That's why it's simple to add more types of cells to the game.
 
 ## Install
+> If you're using windows, you can download the executable directly from [releases](https://github.com/DavidNepozitek/Cells/releases/)
 1. Instal the latest version of [cmake](https://cmake.org/) for your system.
 2. Download [SFML](https://www.sfml-dev.org/) for your system and compiler (or possibly build it with cmake by the instruction on their website). 
 3. In the root directory of this repository run `cmake -S . -B <build_path> -DSFML_DIR:STRING="<path_to_sfml_cmake>"`
