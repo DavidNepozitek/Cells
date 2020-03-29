@@ -22,7 +22,7 @@ The game is based on interaction of various cells and moving in an area with low
 2. Download [SFML](https://www.sfml-dev.org/) for your system and compiler (or possibly build it with cmake by the instruction on their website). 
 3. In the root directory of this repository run `cmake -S . -B <build_path> -DSFML_DIR:STRING="<path_to_sfml_cmake>"`
     - You might need to specify the target compiler with `-G` argument (for example `-G "Visual Studio 15 2017"`)
-    - `<path_to_sfml_cmake>` point to `SFML-2.5.1\lib\cmake\SFML` directory where `SFMLConfig.cmake` is located
+    - `<path_to_sfml_cmake>` must point to `SFML-2.5.1\lib\cmake\SFML` directory where `SFMLConfig.cmake` is located
 4. In the build directory run `cmake --build .`
 5. Make sure `Fonts` folder is in the same directory as the executable (especially on Windows)
 6. Run the executable
