@@ -28,7 +28,8 @@ void World::update(const sf::Time dt)
 	handle_collisions();
 
 	auto max_size = 0.f;
-	
+
+	// Update all cells in the world
 	for (auto& cell : cells_)
 	{
 		if (cell->size > max_size)
@@ -41,6 +42,7 @@ void World::update(const sf::Time dt)
 	scene_graph_.update(dt);
 	player_cell_.update(dt);
 
+	// Create a food cell when the player moves
 	if (player_cell_.lost_size > 3)
 	{
 		player_cell_.size -= sqrt(player_cell_.lost_size);
@@ -54,16 +56,19 @@ void World::update(const sf::Time dt)
 		cells_.push_back(std::move(cell));
 		player_cell_.last_move = sf::Vector2f();
 	}
-	
+
+	// Erase small cells
 	cells_.erase(std::remove_if(cells_.begin(), cells_.end(), [](const std::unique_ptr<Cell>& cell) {return cell->death_marked && cell->size < 0.01; }),
 	             cells_.end());
 
+	// Game lost when player size is small
 	if (player_cell_.size < 1)
 	{
 		has_ended = true;
 		game_progress.has_won = false;
 	}
 
+	// Game win when player is the biggest
 	if (player_cell_.size > max_size)
 	{
 		has_ended = true;
@@ -73,6 +78,7 @@ void World::update(const sf::Time dt)
 
 void World::draw() const
 {
+	// Draw bounds
 	sf::RectangleShape bounds(sf::Vector2f(world_bounds_.width, world_bounds_.height));
 	bounds.setOutlineThickness(3.f);
 	bounds.setOutlineColor(sf::Color(20, 50, 100, 150));
@@ -80,7 +86,6 @@ void World::draw() const
 	window_.draw(bounds);
 	
 	window_.draw(scene_graph_);
-	
 	
 	for(auto& cell : cells_)
 	{
@@ -99,7 +104,8 @@ bool World::handle_event(const sf::Event& event)
 void World::build_scene()
 {
 	srand(game_progress.level + 1);
-	
+
+	// Create background cells
 	for (auto i = 0; i < 200; ++i)
 	{
 		const auto x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / world_bounds_.width));
@@ -112,6 +118,7 @@ void World::build_scene()
 		scene_graph_.attach_child(std::move(cell));
 	}
 
+	// Create food cells
 	for (auto i = 0; i < 200 / (game_progress.level); ++i)
 	{
 		const auto x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / world_bounds_.width));
@@ -124,6 +131,7 @@ void World::build_scene()
 		cells_.push_back(std::move(cell));
 	}
 
+	// Create smaller normal cells
 	for (auto i = 0; i < 35; ++i)
 	{
 		const auto x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / world_bounds_.width));
@@ -138,6 +146,7 @@ void World::build_scene()
 		cells_.push_back(std::move(cell));
 	}
 
+	// Create bigger normal cells
 	for (auto i = 0; i < 10; ++i)
 	{
 		const auto x = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / world_bounds_.width));
@@ -181,6 +190,7 @@ void World::handle_reactions(Cell& cell) const
 
 void World::handle_bounds(Cell& cell) const
 {
+	// Handle bouncing of the walls
 	auto pos = cell.getPosition();
 	auto velocity = cell.get_velocity();
 	if (pos.x < cell.size)
