@@ -3,6 +3,7 @@
 #include <memory>
 #include <SFML/Graphics/Font.hpp>
 #include <cassert>
+#include "Fonts.h"
 
 
 /**
@@ -33,3 +34,5 @@ public:
 		return *font_pair->second;
 	}
 };
+
+typedef ResourceHolder<Fonts::Id, sf::Font> FontHolder;

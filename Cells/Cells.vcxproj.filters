@@ -30,9 +30,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InitState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -92,13 +89,7 @@
     <ClInclude Include="Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="InitState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fonts.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
@@ -143,5 +134,11 @@
     <ClInclude Include="GameProgress.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Fonts.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
 </Project>

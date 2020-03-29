@@ -1,4 +1,5 @@
 ﻿#include "FoodCell.h"
+#include <cmath>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>

@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include <cmath>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include "Entity.h"

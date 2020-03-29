@@ -3,7 +3,6 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 #include "ResourceHolder.h"
-#include "Fonts.hpp"
 #include "GameSettings.h"
 #include "GameProgress.h"
 
