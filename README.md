@@ -24,7 +24,7 @@ The game is based on interaction of various cells and moving in an area with low
     - You might need to specify the target compiler with `-G` argument (for example `-G "Visual Studio 15 2017"`)
     - `<path_to_sfml_cmake>` must point to `SFML-2.5.1\lib\cmake\SFML` directory where `SFMLConfig.cmake` is located
 4. In the build directory run `cmake --build .`
-5. Make sure `Fonts` folder is in the same directory as the executable (especially on Windows)
+5. Make sure `Fonts` folder is in the same directory as the executable (especially with Visual Studio that creates new directory for the executable)
 6. Run the executable
 
 ## TODOS
